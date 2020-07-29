@@ -1,15 +1,34 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
-import { Card } from './styles';
-
+import { Card, Header, Bio } from './styles';
+import { formatValue } from '../../utils/formatValue';
 import IPokemonCardDTO from './IPokemonCardDTO';
 
+const amountMoves: number[] = [1, 2, 3, 4];
 const PokemonCard: React.FC<IPokemonCardDTO> = ({ pokemon }) => {
+  const FormattedPrice = useMemo(() => {
+    return formatValue(pokemon.weight);
+  }, [pokemon.weight]);
+
   return (
     <Card>
-      <h2>{pokemon.name}</h2>
-      <h2>{pokemon.weight}</h2>
-      <h2>{pokemon.moves[0].move.name}</h2>
+      <Header>
+        <div>
+          <img src={pokemon.sprites.front_default} alt="pokemon" />
+          <strong>{FormattedPrice}</strong>
+        </div>
+      </Header>
+      <Bio>
+        <strong>{pokemon.name}</strong>
+        <strong>Moves</strong>
+        <div>
+          {amountMoves.map((moves, index) => (
+            <p key={moves}>
+              {pokemon.moves[index] ? pokemon.moves[index].move.name : '-'}
+            </p>
+          ))}
+        </div>
+      </Bio>
     </Card>
   );
 };

@@ -6,22 +6,11 @@ import PokeStoreLogo from '../../assets/PokeStoreLogo.png';
 import pokemonApi from '../../services/api';
 
 import PokemonCard from '../../components/PokemonCard/PokemonCard';
+import PokemonStatusInterface from './IPokemonDTO';
 
 interface PokemonInterface {
   name: string;
   url: string;
-}
-
-interface MovePokemonInterface {
-  move: {
-    name: string;
-  };
-}
-
-interface PokemonStatusInterface {
-  name: string;
-  weight: number;
-  moves: MovePokemonInterface[];
 }
 
 const Home: React.FC = () => {
@@ -67,7 +56,7 @@ const Home: React.FC = () => {
       </Banner>
       <PokemonList>
         {pokemonStatus.map(pokemon => (
-          <PokemonCard pokemon={pokemon} />
+          <PokemonCard pokemon={pokemon} key={pokemon.id} />
         ))}
       </PokemonList>
     </Container>

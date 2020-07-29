@@ -26,6 +26,6 @@ export const PokemonList = styled.div`
   padding: 20px;
 
   display: grid;
-  grid-gap: 5px;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  grid-gap: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 `;

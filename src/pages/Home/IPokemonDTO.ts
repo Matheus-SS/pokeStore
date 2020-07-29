@@ -10,7 +10,7 @@ interface MovePokemonInterface {
   };
 }
 
-export interface PokemonStatusInterface {
+export default interface PokemonStatusInterface {
   id: number;
   name: string;
   weight: number;
@@ -19,8 +19,4 @@ export interface PokemonStatusInterface {
     front_default: string;
   };
   ability: AbilityPokemonInterface[];
-}
-
-export default interface IPokemonCardDTO {
-  pokemon: PokemonStatusInterface;
 }
