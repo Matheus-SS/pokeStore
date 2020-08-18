@@ -19,8 +19,31 @@ export interface PokemonStatusInterface {
     front_default: string;
   };
   ability: AbilityPokemonInterface[];
+  types: Array<{
+    type: {
+      name:
+      | 'bug'
+      | 'fire'
+      | 'grass'
+      | 'normal'
+      | 'water'
+      | 'dark'
+      | 'dragon'
+      | 'electric'
+      | 'fairy'
+      | 'fighting'
+      | 'flying'
+      | 'ghost'
+      | 'ground'
+      | 'ice'
+      | 'poison'
+      | 'psychic'
+      | 'rock'
+      | 'steel';
+    };
+  }>;
 }
 
-export default interface IPokemonCardDTO {
+export interface IPokemonCardDTO {
   pokemon: PokemonStatusInterface;
 }

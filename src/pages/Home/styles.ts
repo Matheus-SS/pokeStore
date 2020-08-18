@@ -9,14 +9,16 @@ export const Banner = styled.div`
   background: #000;
   height: 40vh;
   width: 100%;
-
+  padding: 10px;
   box-shadow: 2px 2px 6px -1px #000;
 
   display: flex;
   justify-content: center;
 
-  div {
-    margin-top: 20px;
+  img {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
   }
 `;
 

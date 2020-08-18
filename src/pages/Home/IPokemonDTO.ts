@@ -18,5 +18,29 @@ export default interface PokemonStatusInterface {
   sprites: {
     front_default: string;
   };
+  types: Array<{
+    type: {
+      name:
+      | 'bug'
+      | 'fire'
+      | 'grass'
+      | 'normal'
+      | 'water'
+      | 'dark'
+      | 'dragon'
+      | 'electric'
+      | 'fairy'
+      | 'fighting'
+      | 'flying'
+      | 'ghost'
+      | 'ground'
+      | 'ice'
+      | 'poison'
+      | 'psychic'
+      | 'rock'
+      | 'steel';
+    };
+  }>;
+
   ability: AbilityPokemonInterface[];
 }

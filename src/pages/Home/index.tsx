@@ -21,7 +21,7 @@ const Home: React.FC = () => {
 
   useEffect(() => {
     async function LoadPokemons(): Promise<void> {
-      const response = await pokemonApi.get('pokemon');
+      const response = await pokemonApi.get('pokemon?limit=100&offset=100');
       const pokemon = response.data.results;
       setPokemons(pokemon);
     }
@@ -50,9 +50,7 @@ const Home: React.FC = () => {
   return (
     <Container>
       <Banner>
-        <div>
-          <img src={PokeStoreLogo} alt="logo" />
-        </div>
+        <img src={PokeStoreLogo} alt="logo" />
       </Banner>
       <PokemonList>
         {pokemonStatus.map(pokemon => (
