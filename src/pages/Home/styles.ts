@@ -31,3 +31,35 @@ export const PokemonList = styled.div`
   grid-gap: 15px;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 `;
+
+export const Pages = styled.div`
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  ul {
+    max-width: 300px;
+    display: flex;
+    height: 60px;
+    list-style: none;
+    justify-content: center;
+
+    li a {
+      padding: 5px 10px;
+      background: #000;
+      text-decoration: none;
+      border-radius: 4px;
+      color: #fff;
+    }
+    li + li {
+      margin-left: 5px;
+    }
+
+    li.active a {
+      color: #ffef2c;
+    }
+  }
+
+  li.disabled a {
+    background: #928484cc;
+  }
+`;

@@ -7,7 +7,7 @@ Uma loja para comprar utilizando a api do pokemon
 - [x] Letras do Banner igual do pokemon
 - [x] listar pokemons
 - [x] cards para a lista de pokemons
-- [ ] paginação
+- [x] paginação
 - [ ] loading
 - [ ] carrinho de compras
 - [ ] adicionar ao carrinho
