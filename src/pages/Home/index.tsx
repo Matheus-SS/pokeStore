@@ -7,6 +7,8 @@ import pokemonApi from '../../services/api';
 import PokemonCard from '../../components/PokemonCard/PokemonCard';
 import PokemonStatusInterface from './IPokemonDTO';
 
+import PokemonCardSkeleton from '../../skeletons/PokemonCardSkeleton';
+
 import { Container, Banner, PokemonList, Pages } from './styles';
 
 interface PokemonInterface {
@@ -22,7 +24,8 @@ const Home: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [offset, setOffSet] = useState(0);
   const [limit] = useState(18);
-  // 980 items
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     async function LoadPokemons(): Promise<void> {
       const response = await pokemonApi.get(
@@ -41,6 +44,7 @@ const Home: React.FC = () => {
 
   useEffect(() => {
     async function loadPokemonStatus(): Promise<void> {
+      setLoading(true);
       const arrayPokemon = pokemons.map(async poke => {
         const pokemon = await getPokemonData(`${poke.url}`);
         return pokemon;
@@ -48,6 +52,7 @@ const Home: React.FC = () => {
       const result = await Promise.all(arrayPokemon);
 
       setPokemonStatus(result);
+      setLoading(false);
     }
     loadPokemonStatus();
   }, [getPokemonData, pokemons]);
@@ -56,6 +61,8 @@ const Home: React.FC = () => {
     page => {
       setCurrentPage(page);
       setOffSet(page * limit - limit);
+      setLoading(true);
+      window.scrollTo({ top: 0 });
     },
     [limit],
   );
@@ -66,9 +73,13 @@ const Home: React.FC = () => {
         <img src={PokeStoreLogo} alt="logo" />
       </Banner>
       <PokemonList>
-        {pokemonStatus.map(pokemon => (
-          <PokemonCard pokemon={pokemon} key={pokemon.id} />
-        ))}
+        {loading ? (
+          <PokemonCardSkeleton />
+        ) : (
+            pokemonStatus.map(pokemon => (
+              <PokemonCard pokemon={pokemon} key={pokemon.id} />
+            ))
+          )}
       </PokemonList>
 
       <Pages>

@@ -8,8 +8,9 @@ Uma loja para comprar utilizando a api do pokemon
 - [x] listar pokemons
 - [x] cards para a lista de pokemons
 - [x] paginação
-- [ ] loading
+- [x] loading
 - [ ] carrinho de compras
+- [ ] hook para o carrinho
 - [ ] adicionar ao carrinho
 - [ ] remover do carrinho
 - [ ] aumentar quantidade de compra
