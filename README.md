@@ -2,6 +2,8 @@
 
 Uma loja para comprar utilizando a api do pokemon
 
+https://pokestoreapp.netlify.app/
+
 ## ToDos
 - [x] banner inicial
 - [x] Letras do Banner igual do pokemon
