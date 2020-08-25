@@ -8,7 +8,7 @@ const PokemonCardSkeleton: React.FC = () => {
   return (
     <>
       {cards.fill(0).map((item, index) => (
-        <SkeletonTheme color="#e2e2e2" highlightColor="#fff">
+        <SkeletonTheme color="#e2e2e2" highlightColor="#fff" key={index}>
           <Card>
             <Header>
               <Skeleton height={90} />

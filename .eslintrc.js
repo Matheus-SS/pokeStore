@@ -31,6 +31,7 @@ module.exports = {
   "rules": {
     "prettier/prettier": "error",
     "react/prop-types": "off",
+    "react/no-array-index-key": "off",
     "camelcase": "off",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",

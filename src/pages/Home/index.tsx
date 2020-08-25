@@ -1,15 +1,18 @@
 import React, { useState, useEffect, useCallback } from 'react';
-// testing
+
 import Pagination from 'react-js-pagination';
 import PokeStoreLogo from '../../assets/PokeStoreLogo.png';
 import pokemonApi from '../../services/api';
 
-import PokemonCard from '../../components/PokemonCard/PokemonCard';
 import PokemonStatusInterface from './IPokemonDTO';
 
 import PokemonCardSkeleton from '../../skeletons/PokemonCardSkeleton';
 
-import { Container, Banner, PokemonList, Pages } from './styles';
+import PokemonCard from '../../components/PokemonCard/PokemonCard';
+import FloatingCart from '../../components/FloatingCart';
+import ModalCart from '../../components/ModalCart';
+
+import { Container, Banner, Logo, PokemonList, Pages } from './styles';
 
 interface PokemonInterface {
   name: string;
@@ -26,7 +29,10 @@ const Home: React.FC = () => {
   const [limit] = useState(18);
   const [loading, setLoading] = useState(true);
 
+  const [modalCart, setModalCart] = useState(false);
+
   useEffect(() => {
+    // load url and name of the pokemons
     async function LoadPokemons(): Promise<void> {
       const response = await pokemonApi.get(
         `pokemon?limit=${limit}&offset=${offset}`,
@@ -37,12 +43,14 @@ const Home: React.FC = () => {
     LoadPokemons();
   }, [offset, limit]);
 
+  // return the data of pokemon
   const getPokemonData = useCallback(async url => {
     const response = await pokemonApi.get(`${url}`);
     return response.data;
   }, []);
 
   useEffect(() => {
+    // load all info of the pokemons in the page
     async function loadPokemonStatus(): Promise<void> {
       setLoading(true);
       const arrayPokemon = pokemons.map(async poke => {
@@ -57,6 +65,7 @@ const Home: React.FC = () => {
     loadPokemonStatus();
   }, [getPokemonData, pokemons]);
 
+  // change the page
   const handlePageChange = useCallback(
     page => {
       setCurrentPage(page);
@@ -67,11 +76,22 @@ const Home: React.FC = () => {
     [limit],
   );
 
+  // open the pokemon cart
+  function toggleModalCart(): void {
+    setModalCart(!modalCart);
+  }
+
   return (
     <Container>
       <Banner>
-        <img src={PokeStoreLogo} alt="logo" />
+        <span>
+          <FloatingCart setIsOpen={toggleModalCart} />
+        </span>
+        <Logo>
+          <img src={PokeStoreLogo} alt="logo" />
+        </Logo>
       </Banner>
+
       <PokemonList>
         {loading ? (
           <PokemonCardSkeleton />
@@ -90,6 +110,8 @@ const Home: React.FC = () => {
           itemsCountPerPage={20}
         />
       </Pages>
+
+      <ModalCart setIsOpen={toggleModalCart} isOpen={modalCart} />
     </Container>
   );
 };

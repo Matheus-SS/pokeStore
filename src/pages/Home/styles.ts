@@ -3,22 +3,35 @@ import styled from 'styled-components';
 export const Container = styled.div`
   height: 100vh;
   width: 100%;
+  /* overflow: hidden;  when overlay is open */
 `;
 
 export const Banner = styled.div`
+  display: flex;
+  flex-direction: column;
+
   background: #000;
   height: 40vh;
   width: 100%;
   padding: 10px;
   box-shadow: 2px 2px 6px -1px #000;
 
+  span {
+    align-self: flex-end;
+    margin-top: 10px;
+    margin-right: 10px;
+  }
+`;
+
+export const Logo = styled.div`
   display: flex;
   justify-content: center;
+  flex: 1;
 
+  height: 30vh;
   img {
     object-fit: contain;
     width: 100%;
-    height: 100%;
   }
 `;
 
