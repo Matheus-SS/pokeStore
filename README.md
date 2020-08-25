@@ -18,3 +18,5 @@ https://pokestoreapp.netlify.app/
 - [x] hook diminuir quantidade de compra
 - [x] somar os itens do carrinho
 - [ ] hook remover do carrinho
+
+<!-- testing -->
