@@ -4,4 +4,7 @@ export const formatValue = (value: number): string =>
     currency: 'BRL',
   }).format(value);
 
-// teste
+export const CapitalizePokemonName = (name: string): string => {
+  if (typeof name !== 'string') return '';
+  return name.charAt(0).toUpperCase() + name.slice(1);
+};

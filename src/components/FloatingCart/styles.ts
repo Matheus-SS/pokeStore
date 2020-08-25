@@ -1,11 +1,18 @@
 import styled from 'styled-components';
 
-export const ContainerButton = styled.button`
+interface IContainerButton {
+  visible?: boolean;
+}
+export const ContainerButton = styled.button<IContainerButton>`
   height: 30px;
   width: 30px;
 
-  /* background: transparent;
-  border: 0; */
+  background: transparent;
+  border: 0;
+
+  @media (max-width: 700px) {
+    display: ${props => (props.visible ? 'block' : 'none')};
+  }
 `;
 
 export const Container = styled.div`

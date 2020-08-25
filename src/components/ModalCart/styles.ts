@@ -23,6 +23,10 @@ export const ContainerCart = styled.div`
   width: 350px;
   margin-left: auto;
   background-color: #fefefe;
+
+  @media (max-width: 700px) {
+    width: 100%;
+  }
 `;
 
 export const Header = styled.header`
@@ -69,6 +73,16 @@ export const PokemonContainerList = styled.ul`
   }
 `;
 
+export const EmptyCart = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+
+  color: #aba8a8;
+`;
+
 export const PokemonItemCart = styled.div`
   display: flex;
   flex-direction: column;
@@ -85,8 +99,10 @@ export const PokemonItemCart = styled.div`
       margin-left: 5px;
     }
     img {
-      width: 40px;
-      height: 40px;
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      filter: drop-shadow(4px 2px 2px #000);
     }
   }
   span.action {
@@ -119,9 +135,17 @@ export const Payment = styled.div`
   flex-direction: column;
   padding: 0 30px;
 
-  p {
+  div {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    p {
+      display: flex;
+      justify-content: space-between;
+
+      & + p {
+        margin-top: 10px;
+      }
+    }
   }
 
   span {

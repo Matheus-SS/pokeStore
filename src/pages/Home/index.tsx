@@ -13,6 +13,7 @@ import FloatingCart from '../../components/FloatingCart';
 import ModalCart from '../../components/ModalCart';
 
 import { Container, Banner, Logo, PokemonList, Pages } from './styles';
+import MobileNavBar from '../../components/MobileNavBar';
 
 interface PokemonInterface {
   name: string;
@@ -82,37 +83,40 @@ const Home: React.FC = () => {
   }
 
   return (
-    <Container>
-      <Banner>
-        <span>
-          <FloatingCart setIsOpen={toggleModalCart} />
-        </span>
-        <Logo>
-          <img src={PokeStoreLogo} alt="logo" />
-        </Logo>
-      </Banner>
+    <>
+      <Container>
+        <Banner>
+          <span>
+            <FloatingCart setIsOpen={toggleModalCart} visible />
+          </span>
+          <Logo>
+            <img src={PokeStoreLogo} alt="logo" />
+          </Logo>
+        </Banner>
 
-      <PokemonList>
-        {loading ? (
-          <PokemonCardSkeleton />
-        ) : (
-            pokemonStatus.map(pokemon => (
-              <PokemonCard pokemon={pokemon} key={pokemon.id} />
-            ))
-          )}
-      </PokemonList>
+        <PokemonList>
+          {loading ? (
+            <PokemonCardSkeleton />
+          ) : (
+              pokemonStatus.map(pokemon => (
+                <PokemonCard pokemon={pokemon} key={pokemon.id} />
+              ))
+            )}
+        </PokemonList>
 
-      <Pages>
-        <Pagination
-          activePage={currentPage}
-          totalItemsCount={800}
-          onChange={handlePageChange}
-          itemsCountPerPage={20}
-        />
-      </Pages>
+        <Pages>
+          <Pagination
+            activePage={currentPage}
+            totalItemsCount={800}
+            onChange={handlePageChange}
+            itemsCountPerPage={20}
+          />
+        </Pages>
 
-      <ModalCart setIsOpen={toggleModalCart} isOpen={modalCart} />
-    </Container>
+        <ModalCart setIsOpen={toggleModalCart} isOpen={modalCart} />
+      </Container>
+      <MobileNavBar setIsOpen={toggleModalCart} visible={false} />
+    </>
   );
 };
 

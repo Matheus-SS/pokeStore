@@ -11,10 +11,10 @@ https://pokestoreapp.netlify.app/
 - [x] cards para a lista de pokemons
 - [x] paginação
 - [x] loading
-- [ ] carrinho de compras
-- [ ] hook para o carrinho
-- [ ] adicionar ao carrinho
-- [ ] remover do carrinho
-- [ ] aumentar quantidade de compra
-- [ ] diminuir quantidade de compra
-- [ ] somar os itens do carrinho
+- [x] carrinho de compras
+- [x] hook para o carrinho
+- [x] hook adicionar ao carrinho
+- [x] hook aumentar quantidade de compra
+- [x] hook diminuir quantidade de compra
+- [x] somar os itens do carrinho
+- [ ] hook remover do carrinho
